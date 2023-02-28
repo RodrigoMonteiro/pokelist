@@ -1,0 +1,57 @@
+.toggle-btn-4 {
+  width: 60px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.toggle-btn-4 input[type="checkbox"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+  appearance: none;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  outline: none;
+  background-color: var(--main-background);
+}
+
+.toggle-btn-4 .circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  transition: all 175ms ease-in-out;
+  pointer-events: none;
+  border: 7px solid var(--background-primary);
+  border-radius: 50%;
+}
+
+.toggle-btn-4 .circle::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  top: -2%;
+  left: 0;
+  border-radius: 50%;
+  transform: rotate(30deg) scale(0);
+  transition: all 175ms ease-in-out;
+  transition-delay: 50ms;
+}
+
+.toggle-btn-4 input[type="checkbox"]:checked ~ .circle {
+  left: 35px;
+  border: 0;
+  background-color:var(--background-primary);
+}
+
+.toggle-btn-4 input[type="checkbox"]:checked ~ .circle::before {
+  background-color: var(--main-background);
+  transform: rotate(30deg) scale(1);
+}
