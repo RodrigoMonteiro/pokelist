@@ -40,6 +40,44 @@ $pokelist-theme: mat.define-light-theme((
   padding: 0;
   color: var(--text-primary);
 }
+:root{
+    --type-grass: #2e7d32;
+    --type-grass-border: #005005;
+    --type-water: #0277bd;
+    --type-water-border: #004c8c;
+    --type-fire: #ef6c00;
+    --type-fire-border: #b53d00;
+    --type-ground: #bf360c;
+    --type-ground-border: #870000;
+    --type-rock: #fff176;
+    --type-rock-border: #cabf45;
+    --type-eletric: #ffff00;
+    --type-eletric-border: #c7cc00;
+    --type-fairy: #f8bbd0;
+    --type-fairy-border: #c48b9f;
+    --type-dragon: #1a237e;
+    --type-dragon-border: #000051;
+    --type-iron: #00796b;
+    --type-iron-border: #004c40;
+    --type-poison: #9c27b0;
+    --type-poison-border: #6a0080;
+    --type-insect: #c6ff00;
+    --type-insect-border: #90cc00;
+    --type-psychic: #ff5252;
+    --type-psychic-border: '#c50e29';
+    --type-ghost: '#6a1b9a';
+    --type-ghost-border: '#38006b';
+    --type-normal: #9e9e9e;
+    --type-normal-border: #707070;
+    --type-fighting: #d50000;
+    --type-fighting-border: #9b0000;
+    --type-ice: #b2ebf2;
+    --type-ice-border: #81b9bf;
+    --type-dark: #212121;
+    --type-dark-border: #000000;
+    --type-flying: #e0e0e0;
+    --type-flying-border: #aeaeae;
+}
 html, body{
   font-family: 'Open Sans', sans-serif; background-color: var(--main-background);
 

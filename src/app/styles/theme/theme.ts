@@ -11,8 +11,6 @@ export const light: Theme = {
     '--background-secondary': '#ffcb05',
     '--background-extra': '#FF0000',
     '--text-primary': '#000000',
-    '--type-grass': '#2e7d32',
-    '--type-grass-border': '#1b5e20',
   },
 };
 
@@ -24,6 +22,5 @@ export const dark: Theme = {
     '--background-secondary': '#c7a008',
     '--background-extra': '#CC0000',
     '--text-primary': '#F5F3F4',
-    '--type-grass': '#2e7d32',
   },
 };
