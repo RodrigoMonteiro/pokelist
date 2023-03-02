@@ -1,0 +1,16 @@
+<div class="card-container">
+  <div class="card-header">
+    <span>
+      Nº {{pokemonNumber}}: {{pokemonTitle}}
+    </span>
+  </div>
+  <div class="card-content">
+    <img src={{pokemonNormalSprite}} alt="pokemon photo">
+  </div>
+  <div class="card-footer">
+    <ul>
+      <li *ngFor="let type of pokemonType">{{type}}</li>
+    </ul>
+  </div>
+</div>
+<div class="card-container-shadow"></div>
