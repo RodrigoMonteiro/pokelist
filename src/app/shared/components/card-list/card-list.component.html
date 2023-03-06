@@ -1,10 +1,44 @@
-<h4>card-list-component</h4>
-<button (click)="getAllKantoPokemons()">Kanto pokemons</button>
-<button (click)="getAllJohtoPokemons()">Johto pokemons</button>
-<button (click)="getAllHoennPokemons()">Hoenn pokemons</button>
-<button (click)="getAllSinnohPokemons()">Sinnoh pokemons</button>
-<button (click)="getAllUnovaPokemons()">Unova pokemons</button>
-<button (click)="getAllKalosPokemons()">Kalos pokemons</button>
-<button (click)="getAllAlolaPokemons()">Alola pokemons</button>
-<button (click)="getAllGalarPokemons()">Galar pokemons</button>
-<button (click)="getAllHisuiPokemons()">Hisui pokemons</button>
+<div class="card-list-container">
+  <span><strong>Search pokemons</strong></span>
+  <div class="btn-container">
+    <button class="btn" (click)="getAllKantoPokemons()">
+      <strong>Kanto</strong>
+    </button>
+    <button class="btn" (click)="getAllJohtoPokemons()">
+      <strong>Johto</strong>
+    </button>
+    <button class="btn" (click)="getAllHoennPokemons()">
+      <strong>Hoenn</strong>
+    </button>
+    <button class="btn" (click)="getAllSinnohPokemons()">
+      <strong>Sinnoh</strong>
+    </button>
+    <button class="btn" (click)="getAllUnovaPokemons()">
+      <strong>Unova</strong>
+    </button>
+    <button class="btn" (click)="getAllKalosPokemons()">
+      <strong>Kalos</strong>
+    </button>
+    <button class="btn" (click)="getAllAlolaPokemons()">
+      <strong>Alola</strong>
+    </button>
+    <button class="btn" (click)="getAllGalarPokemons()">
+      <strong>Galar</strong>
+    </button>
+    <button class="btn" (click)="getAllHisuiPokemons()">
+      <strong>Hisui</strong>
+    </button>
+  </div>
+  <div class="input-container">
+    <input
+      class="input-field"
+      type="text"
+      placeholder="Search by name.."
+    />
+    <button class="input-btn-submit">
+      <mat-icon
+        fontIcon="search"
+      ></mat-icon>
+    </button>
+  </div>
+</div>
