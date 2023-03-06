@@ -7,10 +7,11 @@ import { SelectComponent } from './components/select/select.component';
 import { CardComponent } from './components/card/card.component';
 import { PokemonService } from './services/Pokemon.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CardListComponent } from './components/card-list/card-list.component';
 @NgModule({
-  declarations: [HeaderComponent, SidenavComponent, SelectComponent, CardComponent],
+  declarations: [HeaderComponent, SidenavComponent, SelectComponent, CardComponent, CardListComponent],
   imports: [HttpClientModule, CommonModule, MaterialModule],
-  exports: [HeaderComponent, SidenavComponent, CardComponent],
+  exports: [HeaderComponent, SidenavComponent, CardComponent, CardListComponent],
   providers:[PokemonService]
 })
 export class SharedModule {}

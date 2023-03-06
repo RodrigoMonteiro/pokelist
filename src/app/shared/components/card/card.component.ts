@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  pokemonNumber: number = 1;
-  @Input() pokemonTitle: string = 'Bulbasaur'; //mocked for tests
+  @Input() pokemonNumber: number = 1;
+  @Input() pokemonName: string = 'Bulbasaur'; //mocked for tests
   @Input() pokemonHeight: number = 7; //mocked for tests
   @Input() pokemonWeight: number = 10; //mocked for tests
   @Input() pokemonType: string[] = ['Grass', 'Poison']; //mocked for tests
