@@ -1,5 +1,5 @@
-<div class="card-list-container">
-  <span><strong>Search pokemons</strong></span>
+<div class="card-list-header-container">
+  <span><strong>Search Pokemons</strong></span>
   <div class="btn-container">
     <button class="btn" (click)="getAllKantoPokemons()">
       <strong>Kanto</strong>
@@ -41,4 +41,22 @@
       ></mat-icon>
     </button>
   </div>
+</div>
+<div class="card-list-content-container">
+<ul *ngFor="let pokemon of pokemonListKanto">
+  <li><app-card
+    [pokemonNumber] = pokemon.id
+    [pokemonName] = pokemon.name
+    [pokemonHeight] = pokemon.height
+    [pokemonWeight] = pokemon.weight
+    [pokemonTypes] = pokemon.type
+    [pokemonNormalSprite] = pokemon.normalSprite
+    [pokemonShinySprite]=pokemon.shinySprite
+    ></app-card></li>
+</ul>
+
+
+</div>
+<div class="card-list-footer-container">
+
 </div>

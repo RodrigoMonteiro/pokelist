@@ -1,29 +1,33 @@
-.card-list-container {
+.card-list-header-container {
+  top:10vh;
+  position: fixed;
+  width: 100%;
   height: 8vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--background-secondary);
+  z-index: 2;
 }
-.card-list-container span {
+.card-list-header-container span {
   width: 17%;
   text-align: center;
 }
-.card-list-container .btn-container {
+.card-list-header-container .btn-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 100%;
   width: 70%;
 }
-.card-list-container .btn-container .btn {
+.card-list-header-container .btn-container .btn {
   height: 100%;
   width: 11.3%;
   color: var(--text-primary);
   background-color: var(--background-secondary);
   border: 1px solid transparent;
 }
-.card-list-container .btn-container .btn:hover {
+.card-list-header-container .btn-container .btn:hover {
   position: relative;
   cursor: pointer;
   opacity: 0.9;
@@ -31,7 +35,7 @@
   transition: all linear 120ms;
   z-index: 2;
 }
-.card-list-container .btn-container .btn:hover:after {
+.card-list-header-container .btn-container .btn:hover:after {
   content: "";
   position: absolute;
   cursor: pointer;
@@ -45,14 +49,14 @@
   z-index: 1;
 }
 
-.card-list-container .input-container {
+.card-list-header-container .input-container {
   width: 22%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-.card-list-container .input-container .input-field {
+.card-list-header-container .input-container .input-field {
   height: 65%;
   width: 75%;
   border-style: none;
@@ -61,11 +65,11 @@
   outline: none;
   color: black;
 }
-.card-list-container .input-container .input-field:focus {
+.card-list-header-container .input-container .input-field:focus {
   border: solid 2px var(--background-primary);
 }
 
-.card-list-container .input-container .input-btn-submit {
+.card-list-header-container .input-container .input-btn-submit {
   width: 10%;
   height: 65%;
   background-color:var(--background-secondary) ;
@@ -74,9 +78,25 @@
 }
 
 
-.card-list-container .input-container .input-btn-submit:hover {
+.card-list-header-container .input-container .input-btn-submit:hover {
   cursor: pointer;
   opacity: 0.7;
   transition: all linear 120ms;
 
 }
+
+.card-list-content-container{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 30px;
+  width: 100%;
+  flex-wrap: wrap;
+  top: 15vh;
+
+}
+
+.card-list-content-container ul li{
+  list-style: none;
+}
+

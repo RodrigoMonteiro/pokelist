@@ -4,5 +4,9 @@ app-header{
 }
 .content-container{
   margin-top: 0;
-  height: 88vh;
+  overflow-y: scroll;
+}
+
+.content-container::-webkit-scrollbar {
+  display: none;
 }

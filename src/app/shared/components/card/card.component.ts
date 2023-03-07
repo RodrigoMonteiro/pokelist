@@ -7,20 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  @Input() pokemonNumber: number = 1;
-  @Input() pokemonName: string = 'Bulbasaur'; //mocked for tests
-  @Input() pokemonHeight: number = 7; //mocked for tests
-  @Input() pokemonWeight: number = 10; //mocked for tests
-  @Input() pokemonType: string[] = ['Grass', 'Poison']; //mocked for tests
-  @Input() pokemonNormalSprite: string =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png'; //mocked for tests
-  @Input() pokemonShinySprite: string =
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/1.png'; //mocked for tests
+  @Input() pokemonNumber: number = 0;
+  @Input() pokemonName: string = '';
+  @Input() pokemonHeight: number = 0;
+  @Input() pokemonWeight: number = 0;
+  @Input() pokemonTypes: string[] = []
+  @Input() pokemonNormalSprite: string ='';
+  @Input() pokemonShinySprite: string ='';
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): any {
-    //Test
-    this.pokemonService.loadPokemonById(1).subscribe((e) => console.log(e));
   }
 }

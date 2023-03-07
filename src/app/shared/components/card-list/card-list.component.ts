@@ -23,17 +23,21 @@ export class CardListComponent implements OnInit {
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
-    this.getAllPokemons();
+   this.getAllKantoPokemons();
   }
+
+capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
   savePokemonInfo(url: string) {
     this.pokemonService.getPokemonInformation(url).subscribe((e) => {
       const newPokemon = {
         id: e.id,
-        name: e.name,
+        name: this.capitalizeFirstLetter(e.name),
         height: e.height,
         weight: e.weight,
-        type: e.types,
+        type: e.types.map((el: any) => this.capitalizeFirstLetter(el.type.name)),
         normalSprite: e.sprites.other['official-artwork'].front_default,
         shinySprite: e.sprites.other['official-artwork'].front_shiny,
         region: this.getPokemonRegion(e.id),
@@ -89,6 +93,7 @@ export class CardListComponent implements OnInit {
     this.pokemonService.loadKantoPokemons().subscribe((el) =>
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
+
       })
     );
     console.log(this.pokemonListKanto);
@@ -99,7 +104,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListJohto);
   }
   getAllHoennPokemons() {
     this.pokemonService.loadHoennPokemons().subscribe((el) =>
@@ -107,7 +111,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListHoenn);
   }
   getAllSinnohPokemons() {
     this.pokemonService.loadSinnohPokemons().subscribe((el) =>
@@ -115,7 +118,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListSinnoh);
   }
   getAllUnovaPokemons() {
     this.pokemonService.loadUnovaPokemons().subscribe((el) =>
@@ -123,7 +125,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListUnova);
   }
   getAllKalosPokemons() {
     this.pokemonService.loadKalosPokemons().subscribe((el) =>
@@ -131,7 +132,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListKalos);
   }
   getAllAlolaPokemons() {
     this.pokemonService.loadAlolaPokemons().subscribe((el) =>
@@ -139,7 +139,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListAlola);
   }
 
   getAllGalarPokemons() {
@@ -148,14 +147,11 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListGalar);
   }
   getAllHisuiPokemons() {
     this.pokemonService.loadHisuiPokemons().subscribe((el) =>
       el.map((e: any) => {
-        this.savePokemonInfo(e.url);
       })
     );
-    console.log(this.pokemonListHisui);
   }
 }
