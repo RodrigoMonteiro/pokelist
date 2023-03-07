@@ -15,8 +15,13 @@ export class CardComponent implements OnInit {
   @Input() pokemonNormalSprite: string ='';
   @Input() pokemonShinySprite: string ='';
 
+
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): any {
+  }
+
+  getPrimaryColor(primaryType :string[]){
+   return primaryType[0]
   }
 }

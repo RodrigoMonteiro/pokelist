@@ -96,7 +96,7 @@ capitalizeFirstLetter(string: string) {
 
       })
     );
-    console.log(this.pokemonListKanto);
+    // console.log(this.pokemonListKanto);
   }
   getAllJohtoPokemons() {
     this.pokemonService.loadJohtoPokemons().subscribe((el) =>

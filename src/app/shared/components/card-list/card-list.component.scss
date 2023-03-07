@@ -87,12 +87,16 @@
 
 .card-list-content-container{
   position: relative;
+  width: 100%;
+  top: 15vh;
+
+}
+.card-list-content-container ul{
   display: flex;
   justify-content: space-between;
   padding: 25px 30px;
   width: 100%;
   flex-wrap: wrap;
-  top: 15vh;
 
 }
 

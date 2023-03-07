@@ -7,8 +7,6 @@
   border-radius: 4px;
   cursor: pointer;
   z-index: 0;
-  border: 4px solid var(--type-grass-border);
-  background-color: var(--type-grass);
 }
 
 .card-container .card-header {
@@ -17,7 +15,7 @@
   align-items: center;
   height: 17%;
   text-align: center;
-  background-color: var(--type-grass);
+ ;
 }
 
 .card-container .card-content {
@@ -48,12 +46,79 @@
   transform: translateY(-2%);
   transition: all linear 120ms;
   .card-content img {
-    opacity: 0.80;
+    opacity: 0.8;
   }
 }
 
-.card-container .card-header::first-letter {
-    text-transform:capitalize;
+.Grass {
+  border: 4px solid var(type-grass-border);
+  background-color: var(--type-grass);
 }
-
-
+.Water {
+  border: 4px solid var(--type-water-border);
+  background-color: var(--type-water);
+}
+.Fire {
+  border: 4px solid var(--type-fire-border);
+  background-color: var(--type-fire);
+}
+.Ground {
+  border: 4px solid var(--type-ground-border);
+  background-color: var(--type-ground);
+}
+.Rock {
+  border: 4px solid var(--type-rock-border);
+  background-color: var(--type-rock);
+}
+.Electric {
+  border: 4px solid var(--type-electric-border);
+  background-color: var(--type-electric);
+}
+.Fairy {
+  border: 4px solid var(--type-fairy-border);
+  background-color: var(--type-fairy);
+}
+.Dragon {
+  border: 4px solid var(--type-dragon-border);
+  background-color: var(--type-dragon);
+}
+.Iron {
+  border: 4px solid var(--type-iron-border);
+  background-color: var(--type-iron);
+}
+.Poison {
+  border: 4px solid var(--type-poison-border);
+  background-color: var(--type-poison);
+}
+.Bug {
+  border: 4px solid var(--type-bug-border);
+  background-color: var(--type-bug);
+}
+.Psychic {
+  border: 4px solid var(--type-psychic-border);
+  background-color: var(--type-psychic);
+}
+.Ghost {
+  border: 4px solid var(--type-ghost-border);
+  background-color: var(--type-ghost);
+}
+.Normal {
+  border: 4px solid var(--type-normal-border);
+  background-color: var(--type-normal);
+}
+.Fighting {
+  border: 4px solid var(--type-fighting-border);
+  background-color: var(--type-fighting);
+}
+.Ice {
+  border: 4px solid var(--type-ice-border);
+  background-color: var(--type-ice);
+}
+.Dark {
+  border: 4px solid var(--type-dark-border);
+  background-color: var(--type-dark);
+}
+.Flying {
+  border: 4px solid var(--type-flying-border);
+  background-color: var(--type-flying);
+}

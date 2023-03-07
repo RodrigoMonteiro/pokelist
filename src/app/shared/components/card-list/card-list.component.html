@@ -43,8 +43,9 @@
   </div>
 </div>
 <div class="card-list-content-container">
-<ul *ngFor="let pokemon of pokemonListKanto">
-  <li><app-card
+<ul>
+  <li *ngFor="let pokemon of pokemonListKanto">
+    <app-card
     [pokemonNumber] = pokemon.id
     [pokemonName] = pokemon.name
     [pokemonHeight] = pokemon.height
@@ -52,7 +53,8 @@
     [pokemonTypes] = pokemon.type
     [pokemonNormalSprite] = pokemon.normalSprite
     [pokemonShinySprite]=pokemon.shinySprite
-    ></app-card></li>
+    >
+  </app-card></li>
 </ul>
 
 
