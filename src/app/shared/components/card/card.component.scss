@@ -51,7 +51,7 @@
 }
 
 .Grass {
-  border: 4px solid var(type-grass-border);
+  border: 4px solid var(--type-grass-border);
   background-color: var(--type-grass);
 }
 .Water {
@@ -82,9 +82,9 @@
   border: 4px solid var(--type-dragon-border);
   background-color: var(--type-dragon);
 }
-.Iron {
-  border: 4px solid var(--type-iron-border);
-  background-color: var(--type-iron);
+.Steel {
+  border: 4px solid var(--type-steel-border);
+  background-color: var(--type-steel);
 }
 .Poison {
   border: 4px solid var(--type-poison-border);

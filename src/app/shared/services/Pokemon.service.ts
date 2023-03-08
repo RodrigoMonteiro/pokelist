@@ -33,7 +33,7 @@ export class PokemonService {
       .get<any>(`${this.baseAPI}?limit=100&offset=151`)
       .pipe(map((e) => e.results));
   }
-  loadHoennPokemons() {
+   loadHoennPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=135&offset=251`)
       .pipe(map((e) => e.results));
@@ -57,7 +57,7 @@ export class PokemonService {
   }
   loadAlolaPokemons() {
     return this.httpClient
-      .get<any>(`${this.baseAPI}?limit=87&offset=722`)
+      .get<any>(`${this.baseAPI}?limit=87&offset=721`)
       .pipe(map((e) => e.results))
   }
 

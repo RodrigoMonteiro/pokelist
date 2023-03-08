@@ -27,7 +27,9 @@
   background-color: var(--background-secondary);
   border: 1px solid transparent;
 }
-.card-list-header-container .btn-container .btn:hover {
+
+.card-list-header-container .btn-container .btn:hover,
+.card-list-header-container .btn-container  .btn-selected {
   position: relative;
   cursor: pointer;
   opacity: 0.9;
@@ -35,7 +37,8 @@
   transition: all linear 120ms;
   z-index: 2;
 }
-.card-list-header-container .btn-container .btn:hover:after {
+.card-list-header-container .btn-container .btn:hover:after,
+.card-list-header-container .btn-container .btn-selected:after{
   content: "";
   position: absolute;
   cursor: pointer;
@@ -89,7 +92,6 @@
   position: relative;
   width: 100%;
   top: 15vh;
-
 }
 .card-list-content-container ul{
   display: flex;

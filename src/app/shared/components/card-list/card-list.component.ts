@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit {
+
+  selectedButton: string = 'Kanto';
   pokemonListAll: any[] = [];
   pokemonListKanto: Pokemon[] = [];
   pokemonListJohto: Pokemon[] = [];
@@ -19,16 +21,25 @@ export class CardListComponent implements OnInit {
   pokemonListAlola: Pokemon[] = [];
   pokemonListGalar: Pokemon[] = [];
   pokemonListHisui: Pokemon[] = [];
+  currentList =  this.pokemonListKanto;
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
-   this.getAllKantoPokemons();
+    this.getAllKantoPokemons();
+    this.getAllJohtoPokemons();
+    this.getAllHoennPokemons();
+    this.getAllSinnohPokemons();
+    this.getAllUnovaPokemons();
+    this.getAllKalosPokemons();
+    this.getAllAlolaPokemons();
+    this.getAllGalarPokemons();
+    this.getAllHisuiPokemons();
   }
 
-capitalizeFirstLetter(string: string) {
+  capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
 
   savePokemonInfo(url: string) {
     this.pokemonService.getPokemonInformation(url).subscribe((e) => {
@@ -37,7 +48,9 @@ capitalizeFirstLetter(string: string) {
         name: this.capitalizeFirstLetter(e.name),
         height: e.height,
         weight: e.weight,
-        type: e.types.map((el: any) => this.capitalizeFirstLetter(el.type.name)),
+        type: e.types.map((el: any) =>
+          this.capitalizeFirstLetter(el.type.name)
+        ),
         normalSprite: e.sprites.other['official-artwork'].front_default,
         shinySprite: e.sprites.other['official-artwork'].front_shiny,
         region: this.getPokemonRegion(e.id),
@@ -93,10 +106,8 @@ capitalizeFirstLetter(string: string) {
     this.pokemonService.loadKantoPokemons().subscribe((el) =>
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
-
       })
     );
-    // console.log(this.pokemonListKanto);
   }
   getAllJohtoPokemons() {
     this.pokemonService.loadJohtoPokemons().subscribe((el) =>
@@ -136,9 +147,10 @@ capitalizeFirstLetter(string: string) {
   getAllAlolaPokemons() {
     this.pokemonService.loadAlolaPokemons().subscribe((el) =>
       el.map((e: any) => {
+        console.log(e)
         this.savePokemonInfo(e.url);
       })
-    );
+      );
   }
 
   getAllGalarPokemons() {
@@ -151,7 +163,55 @@ capitalizeFirstLetter(string: string) {
   getAllHisuiPokemons() {
     this.pokemonService.loadHisuiPokemons().subscribe((el) =>
       el.map((e: any) => {
+        this.savePokemonInfo(e.url);
       })
     );
+  }
+
+  selectKantoRegion() {
+    this.selectedButton = 'Kanto';
+    this.pokemonListKanto.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListKanto;
+  }
+  selectJohtoRegion() {
+    this.selectedButton = 'Johto';
+    this.pokemonListJohto.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListJohto;
+  }
+  selectHoennRegion() {
+    this.selectedButton = 'Hoenn';
+    this.pokemonListHoenn.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListHoenn;
+  }
+  selectSinnohRegion() {
+    this.selectedButton = 'Sinnoh';
+    this.pokemonListSinnoh.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListSinnoh;
+  }
+  selectUnovaRegion() {
+    this.selectedButton = 'Unova';
+    this.pokemonListUnova.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListUnova;
+  }
+  selectKalosRegion() {
+    this.selectedButton = 'Kalos';
+    this.pokemonListKalos.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListKalos;
+  }
+  selectAlolaRegion() {
+    console.log(this.pokemonListAlola);
+    this.selectedButton = 'Alola';
+    this.pokemonListAlola.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListAlola
+  }
+  selectGalarRegion() {
+    this.selectedButton = 'Galar';
+    this.pokemonListGalar.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListGalar;
+  }
+  selectHisuiRegion() {
+    this.selectedButton = 'Hisui';
+    this.pokemonListHisui.sort((a, b) => a.id - b.id);
+    this.currentList = this.pokemonListHisui;
   }
 }

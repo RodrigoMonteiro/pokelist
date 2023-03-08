@@ -1,4 +1,3 @@
-import { Region } from './pokemonRegion';
 export interface Pokemon {
   id: number;
   name: string;
