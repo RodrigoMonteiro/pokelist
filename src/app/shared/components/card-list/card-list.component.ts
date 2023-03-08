@@ -44,32 +44,50 @@ export class CardListComponent implements OnInit {
   addPokemonByRegion(pokemon: Pokemon) {
     switch (pokemon.region) {
       case 'Kanto':
-        this.pokemonListKanto.push(pokemon);
+        if (!this.pokemonListKanto.find((p) => p.name === pokemon.name)) {
+          this.pokemonListKanto.push(pokemon);
+        }
         break;
       case 'Johto':
-        this.pokemonListJohto.push(pokemon);
+        if (!this.pokemonListJohto.find((p) => p.name === pokemon.name)) {
+          this.pokemonListJohto.push(pokemon);
+        }
         break;
       case 'Hoenn':
-        this.pokemonListHoenn.push(pokemon);
+        if (!this.pokemonListHoenn.find((p) => p.name === pokemon.name)) {
+          this.pokemonListHoenn.push(pokemon);
+        }
         break;
       case 'Sinnoh':
-        this.pokemonListSinnoh.push(pokemon);
+        if (!this.pokemonListSinnoh.find((p) => p.name === pokemon.name)) {
+          this.pokemonListSinnoh.push(pokemon);
+        }
         break;
       case 'Unova':
-        this.pokemonListUnova.push(pokemon);
+        if (!this.pokemonListUnova.find((p) => p.name === pokemon.name)) {
+          this.pokemonListUnova.push(pokemon);
+        }
         break;
       case 'Kalos':
-        this.pokemonListKalos.push(pokemon);
+        if (!this.pokemonListKalos.find((p) => p.name === pokemon.name)) {
+          this.pokemonListKalos.push(pokemon);
+        }
         break;
       case 'Alola':
-        this.pokemonListAlola.push(pokemon);
+        if (!this.pokemonListAlola.find((p) => p.name === pokemon.name)) {
+          this.pokemonListAlola.push(pokemon);
+        }
         break;
       case 'Galar':
-        this.pokemonListGalar.push(pokemon);
-        break;
+        if (!this.pokemonListGalar.find((p) => p.name === pokemon.name)) {
+          this.pokemonListGalar.push(pokemon);
+        }
+        break
       case 'Hisui':
-        this.pokemonListHisui.push(pokemon);
-        break;
+        if (!this.pokemonListHisui.find((p) => p.name === pokemon.name)) {
+          this.pokemonListHisui.push(pokemon);
+        }
+        break
     }
   }
   savePokemonInfo(url: string) {
