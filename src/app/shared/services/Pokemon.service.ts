@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, filter } from 'rxjs';
+import { map, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,8 @@ export class PokemonService {
       .get<any>(`${this.baseAPI}?limit=1009`)
       .pipe(map((e) => e.results));
   }
-  loadPokemonById(id: number) {
-    return this.httpClient.get<any>(`${this.baseAPI}${id}`);
+  loadPokemonByName(name: string) {
+    return this.httpClient.get<any>(`${this.baseAPI}${name}`);
   }
   getPokemonInformation(url: string) {
     return this.httpClient.get<any>(url);
@@ -24,16 +24,14 @@ export class PokemonService {
   loadKantoPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=151&offset=0`)
-      .pipe(map(e => e.results))
-
-
+      .pipe(map((e) => e.results));
   }
   loadJohtoPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=100&offset=151`)
       .pipe(map((e) => e.results));
   }
-   loadHoennPokemons() {
+  loadHoennPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=135&offset=251`)
       .pipe(map((e) => e.results));
@@ -42,8 +40,6 @@ export class PokemonService {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=107&offset=386`)
       .pipe(map((e) => e.results));
-
-
   }
   loadUnovaPokemons() {
     return this.httpClient
@@ -57,8 +53,8 @@ export class PokemonService {
   }
   loadAlolaPokemons() {
     return this.httpClient
-      .get<any>(`${this.baseAPI}?limit=87&offset=721`)
-      .pipe(map((e) => e.results))
+      .get<any>(`${this.baseAPI}?limit=88&offset=721`)
+      .pipe(map((e) => e.results));
   }
 
   loadGalarPokemons() {

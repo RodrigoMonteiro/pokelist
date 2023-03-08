@@ -9,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit {
-
+  singlePokemon: Pokemon = {
+    id: 0,
+    name: '',
+    height: 0,
+    weight: 0,
+    type: [],
+    normalSprite: '',
+    shinySprite: '',
+    region: '',
+  };
   selectedButton: string = 'Kanto';
   pokemonListAll: any[] = [];
   pokemonListKanto: Pokemon[] = [];
@@ -21,26 +30,48 @@ export class CardListComponent implements OnInit {
   pokemonListAlola: Pokemon[] = [];
   pokemonListGalar: Pokemon[] = [];
   pokemonListHisui: Pokemon[] = [];
-  currentList =  this.pokemonListKanto;
+  currentList = this.pokemonListKanto;
 
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit() {
-    this.getAllKantoPokemons();
-    this.getAllJohtoPokemons();
-    this.getAllHoennPokemons();
-    this.getAllSinnohPokemons();
-    this.getAllUnovaPokemons();
-    this.getAllKalosPokemons();
-    this.getAllAlolaPokemons();
-    this.getAllGalarPokemons();
-    this.getAllHisuiPokemons();
+    this.getAllPokemons();
   }
 
   capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
+  addPokemonByRegion(pokemon: Pokemon) {
+    switch (pokemon.region) {
+      case 'Kanto':
+        this.pokemonListKanto.push(pokemon);
+        break;
+      case 'Johto':
+        this.pokemonListJohto.push(pokemon);
+        break;
+      case 'Hoenn':
+        this.pokemonListHoenn.push(pokemon);
+        break;
+      case 'Sinnoh':
+        this.pokemonListSinnoh.push(pokemon);
+        break;
+      case 'Unova':
+        this.pokemonListUnova.push(pokemon);
+        break;
+      case 'Kalos':
+        this.pokemonListKalos.push(pokemon);
+        break;
+      case 'Alola':
+        this.pokemonListAlola.push(pokemon);
+        break;
+      case 'Galar':
+        this.pokemonListGalar.push(pokemon);
+        break;
+      case 'Hisui':
+        this.pokemonListHisui.push(pokemon);
+        break;
+    }
+  }
   savePokemonInfo(url: string) {
     this.pokemonService.getPokemonInformation(url).subscribe((e) => {
       const newPokemon = {
@@ -55,40 +86,55 @@ export class CardListComponent implements OnInit {
         shinySprite: e.sprites.other['official-artwork'].front_shiny,
         region: this.getPokemonRegion(e.id),
       };
-
-      switch (newPokemon.region) {
-        case 'Kanto':
-          this.pokemonListKanto.push(newPokemon);
-          break;
-        case 'Johto':
-          this.pokemonListJohto.push(newPokemon);
-          break;
-        case 'Hoenn':
-          this.pokemonListHoenn.push(newPokemon);
-          break;
-        case 'Sinnoh':
-          this.pokemonListSinnoh.push(newPokemon);
-          break;
-        case 'Unova':
-          this.pokemonListUnova.push(newPokemon);
-          break;
-        case 'Kalos':
-          this.pokemonListKalos.push(newPokemon);
-          break;
-        case 'Alola':
-          this.pokemonListAlola.push(newPokemon);
-          break;
-        case 'Galar':
-          this.pokemonListGalar.push(newPokemon);
-          break;
-        case 'Hisui':
-          this.pokemonListHisui.push(newPokemon);
-          break;
-      }
+      this.addPokemonByRegion(newPokemon);
     });
   }
   getAllPokemons() {
-    this.pokemonService.loadAllPokemons();
+    this.pokemonService.loadKantoPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadJohtoPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadHoennPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadSinnohPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadUnovaPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadKalosPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadAlolaPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadGalarPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
+    this.pokemonService.loadHisuiPokemons().subscribe((el) =>
+      el.map((e: any) => {
+        this.savePokemonInfo(e.url);
+      })
+    );
   }
   getPokemonRegion(id: number) {
     const region = regions.find(
@@ -101,71 +147,26 @@ export class CardListComponent implements OnInit {
       return 'Something went wrong...';
     }
   }
-
-  getAllKantoPokemons() {
-    this.pokemonService.loadKantoPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllJohtoPokemons() {
-    this.pokemonService.loadJohtoPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllHoennPokemons() {
-    this.pokemonService.loadHoennPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllSinnohPokemons() {
-    this.pokemonService.loadSinnohPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllUnovaPokemons() {
-    this.pokemonService.loadUnovaPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllKalosPokemons() {
-    this.pokemonService.loadKalosPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllAlolaPokemons() {
-    this.pokemonService.loadAlolaPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        console.log(e)
-        this.savePokemonInfo(e.url);
-      })
-      );
-  }
-
-  getAllGalarPokemons() {
-    this.pokemonService.loadGalarPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
-  }
-  getAllHisuiPokemons() {
-    this.pokemonService.loadHisuiPokemons().subscribe((el) =>
-      el.map((e: any) => {
-        this.savePokemonInfo(e.url);
-      })
-    );
+  getPokemonByName(name: string): void {
+    this.pokemonService.loadPokemonByName(name.toLowerCase()).subscribe({
+      next: ({ id, name, height, weight, types, sprites }) => {
+        this.singlePokemon = {
+          id,
+          name: this.capitalizeFirstLetter(name),
+          height,
+          weight,
+          type: types.map((el: any) =>
+            this.capitalizeFirstLetter(el.type.name)
+          ),
+          normalSprite: sprites.other['official-artwork'].front_default,
+          shinySprite: sprites.other['official-artwork'].front_shiny,
+          region: this.getPokemonRegion(id),
+        };
+      },
+      error: (err) => {
+        console.error('Erro', err.status, 'Pokemon not found .. 😕');
+      },
+    });
   }
 
   selectKantoRegion() {
@@ -199,10 +200,9 @@ export class CardListComponent implements OnInit {
     this.currentList = this.pokemonListKalos;
   }
   selectAlolaRegion() {
-    console.log(this.pokemonListAlola);
     this.selectedButton = 'Alola';
     this.pokemonListAlola.sort((a, b) => a.id - b.id);
-    this.currentList = this.pokemonListAlola
+    this.currentList = this.pokemonListAlola;
   }
   selectGalarRegion() {
     this.selectedButton = 'Galar';
