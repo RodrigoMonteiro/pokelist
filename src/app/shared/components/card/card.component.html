@@ -1,15 +1,21 @@
-<div class="card-container" [ngClass]="this.getPrimaryColor(this.pokemonTypes)">
+<div
+  class="card-container"
+  [ngClass]="this.getPrimaryType(this.pokemonTypes)"
+  (click)="redirectPokemonInfo()"
+>
   <div class="card-header">
     <span>
-      <strong>Nº {{pokemonNumber}}: {{pokemonName}}</strong>
+      <strong>Nº {{ pokemonNumber }}: {{ pokemonName }}</strong>
     </span>
   </div>
   <div class="card-content">
-    <img src={{pokemonNormalSprite}} alt="pokemon photo">
+    <img src="{{ pokemonNormalSprite }}" alt="pokemon photo" />
   </div>
   <div class="card-footer">
     <ul>
-      <li *ngFor="let type of pokemonTypes"><strong>{{type}}</strong></li>
+      <li *ngFor="let type of pokemonTypes">
+        <strong>{{ type }}</strong>
+      </li>
     </ul>
   </div>
 </div>

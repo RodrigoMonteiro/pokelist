@@ -20,7 +20,6 @@ export class CardListComponent implements OnInit {
     region: '',
   };
   selectedButton: string = 'Kanto';
-  pokemonListAll: any[] = [];
   pokemonListKanto: Pokemon[] = [];
   pokemonListJohto: Pokemon[] = [];
   pokemonListHoenn: Pokemon[] = [];
@@ -44,9 +43,10 @@ export class CardListComponent implements OnInit {
   addPokemonByRegion(pokemon: Pokemon) {
     switch (pokemon.region) {
       case 'Kanto':
-        if (!this.pokemonListKanto.find((p) => p.name === pokemon.name)) {
-          this.pokemonListKanto.push(pokemon);
-        }
+       if (!this.pokemonListKanto.find((p) => p.name === pokemon.name)) {
+         this.pokemonListKanto.push(pokemon);
+         this.pokemonListKanto.sort((a, b) => a.id - b.id);
+       }
         break;
       case 'Johto':
         if (!this.pokemonListJohto.find((p) => p.name === pokemon.name)) {
@@ -112,7 +112,7 @@ export class CardListComponent implements OnInit {
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
       })
-    );
+    )
     this.pokemonService.loadJohtoPokemons().subscribe((el) =>
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
@@ -152,7 +152,7 @@ export class CardListComponent implements OnInit {
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
       })
-    );
+      );
   }
   getPokemonRegion(id: number) {
     const region = regions.find(
