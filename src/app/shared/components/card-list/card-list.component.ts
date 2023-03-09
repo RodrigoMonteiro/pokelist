@@ -51,41 +51,49 @@ export class CardListComponent implements OnInit {
       case 'Johto':
         if (!this.pokemonListJohto.find((p) => p.name === pokemon.name)) {
           this.pokemonListJohto.push(pokemon);
+          this.pokemonListJohto.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Hoenn':
         if (!this.pokemonListHoenn.find((p) => p.name === pokemon.name)) {
           this.pokemonListHoenn.push(pokemon);
+          this.pokemonListHoenn.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Sinnoh':
         if (!this.pokemonListSinnoh.find((p) => p.name === pokemon.name)) {
           this.pokemonListSinnoh.push(pokemon);
+          this.pokemonListSinnoh.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Unova':
         if (!this.pokemonListUnova.find((p) => p.name === pokemon.name)) {
           this.pokemonListUnova.push(pokemon);
+          this.pokemonListUnova.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Kalos':
         if (!this.pokemonListKalos.find((p) => p.name === pokemon.name)) {
           this.pokemonListKalos.push(pokemon);
+          this.pokemonListKalos.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Alola':
         if (!this.pokemonListAlola.find((p) => p.name === pokemon.name)) {
           this.pokemonListAlola.push(pokemon);
+          this.pokemonListAlola.sort((a, b) => a.id - b.id);
         }
         break;
       case 'Galar':
         if (!this.pokemonListGalar.find((p) => p.name === pokemon.name)) {
           this.pokemonListGalar.push(pokemon);
+          this.pokemonListGalar.sort((a, b) => a.id - b.id);
         }
         break
       case 'Hisui':
         if (!this.pokemonListHisui.find((p) => p.name === pokemon.name)) {
           this.pokemonListHisui.push(pokemon);
+          this.pokemonListHisui.sort((a, b) => a.id - b.id);
         }
         break
     }
@@ -189,47 +197,38 @@ export class CardListComponent implements OnInit {
 
   selectKantoRegion() {
     this.selectedButton = 'Kanto';
-    this.pokemonListKanto.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListKanto;
   }
   selectJohtoRegion() {
     this.selectedButton = 'Johto';
-    this.pokemonListJohto.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListJohto;
   }
   selectHoennRegion() {
     this.selectedButton = 'Hoenn';
-    this.pokemonListHoenn.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListHoenn;
   }
   selectSinnohRegion() {
     this.selectedButton = 'Sinnoh';
-    this.pokemonListSinnoh.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListSinnoh;
   }
   selectUnovaRegion() {
     this.selectedButton = 'Unova';
-    this.pokemonListUnova.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListUnova;
   }
   selectKalosRegion() {
     this.selectedButton = 'Kalos';
-    this.pokemonListKalos.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListKalos;
   }
   selectAlolaRegion() {
     this.selectedButton = 'Alola';
-    this.pokemonListAlola.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListAlola;
   }
   selectGalarRegion() {
     this.selectedButton = 'Galar';
-    this.pokemonListGalar.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListGalar;
   }
   selectHisuiRegion() {
     this.selectedButton = 'Hisui';
-    this.pokemonListHisui.sort((a, b) => a.id - b.id);
     this.currentList = this.pokemonListHisui;
   }
 }

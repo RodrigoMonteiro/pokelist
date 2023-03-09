@@ -7,6 +7,8 @@
   border-radius: 4px;
   cursor: pointer;
   z-index: 0;
+  box-shadow: 2px 2px  2px  rgba(177, 166, 166, 0.7);
+
 
   .card-header {
     display: flex;
@@ -24,10 +26,12 @@
     width: 100%;
 
     img {
+      border: 1px solid rgb(177, 166, 166);
       height: 100%;
       width: 96%;
       background-color: white;
-      border-radius: 4px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgb(177, 166, 166);
     }
   }
 
@@ -40,6 +44,12 @@
       justify-content: space-around;
       align-items: center;
       list-style-type: none;
+
+      li{
+
+        text-align: center;
+        width: 45%;
+      }
     }
   }
 
@@ -53,75 +63,117 @@
   }
 }
 
+
 .Grass {
-  border: 4px solid var(--type-grass-border);
+  border: 2px solid var(--type-grass-border);
   background-color: var(--type-grass);
+  box-shadow: 1px 1px 1px  var(--type-grass-border)
 }
 .Water {
-  border: 4px solid var(--type-water-border);
+  border: 2px solid var(--type-water-border);
   background-color: var(--type-water);
+   box-shadow: 1px 1px 1px  var(--type-water-border)
 }
+
 .Fire {
-  border: 4px solid var(--type-fire-border);
+  border: 2px solid var(--type-fire-border);
   background-color: var(--type-fire);
+   box-shadow: 1px 1px 1px  var(--type-fire-border)
 }
+
 .Ground {
-  border: 4px solid var(--type-ground-border);
+  border: 2px solid var(--type-ground-border);
   background-color: var(--type-ground);
+   box-shadow: 1px 1px 1px  var(--type-ground-border)
 }
+
 .Rock {
-  border: 4px solid var(--type-rock-border);
+  border: 2px solid var(--type-rock-border);
   background-color: var(--type-rock);
+   box-shadow: 1px 1px 1px  var(--type-rock-border)
 }
+
+
 .Electric {
-  border: 4px solid var(--type-electric-border);
+  border: 2px solid var(--type-electric-border);
   background-color: var(--type-electric);
+   box-shadow: 1px 1px 1px  var(--type-electric-border)
 }
+
 .Fairy {
-  border: 4px solid var(--type-fairy-border);
+  border: 2px solid var(--type-fairy-border);
   background-color: var(--type-fairy);
+   box-shadow: 1px 1px 1px  var(--type-fairy-border)
 }
+
 .Dragon {
-  border: 4px solid var(--type-dragon-border);
+  border: 2px solid var(--type-dragon-border);
   background-color: var(--type-dragon);
+   box-shadow: 1px 1px 1px  var(--type-dragon-border)
 }
+
 .Steel {
-  border: 4px solid var(--type-steel-border);
+  border: 2px solid var(--type-steel-border);
   background-color: var(--type-steel);
+   box-shadow: 1px 1px 1px  var(--type-steel-border)
 }
+
+
 .Poison {
-  border: 4px solid var(--type-poison-border);
+  border: 2px solid var(--type-poison-border);
   background-color: var(--type-poison);
+   box-shadow: 1px 1px 1px  var(--type-poison-border)
 }
+
 .Bug {
-  border: 4px solid var(--type-bug-border);
+  border: 2px solid var(--type-bug-border);
   background-color: var(--type-bug);
+   box-shadow: 1px 1px 1px  var(--type-bug-border)
 }
+
 .Psychic {
-  border: 4px solid var(--type-psychic-border);
+  border: 2px solid var(--type-psychic-border);
   background-color: var(--type-psychic);
+   box-shadow: 1px 1px 1px  var(--type-psychic-border)
 }
+
 .Ghost {
-  border: 4px solid var(--type-ghost-border);
+  border: 2px solid var(--type-ghost-border);
   background-color: var(--type-ghost);
+   box-shadow: 1px 1px 1px  var(--type-ghost-border)
 }
+
 .Normal {
-  border: 4px solid var(--type-normal-border);
+  border: 2px solid var(--type-normal-border);
   background-color: var(--type-normal);
+   box-shadow: 1px 1px 1px  var(--type-normal-border)
 }
+
 .Fighting {
-  border: 4px solid var(--type-fighting-border);
+  border: 2px solid var(--type-fighting-border);
   background-color: var(--type-fighting);
+   box-shadow: 1px 1px 1px  var(--type-fighting-border)
 }
+
 .Ice {
-  border: 4px solid var(--type-ice-border);
+  border: 2px solid var(--type-ice-border);
   background-color: var(--type-ice);
+   box-shadow: 1px 1px 1px  var(--type-ice-border)
 }
+
 .Dark {
-  border: 4px solid var(--type-dark-border);
+  border: 2px solid var(--type-dark-border);
   background-color: var(--type-dark);
+   box-shadow: 1px 1px 1px  var(--type-dark-border)
 }
+
 .Flying {
-  border: 4px solid var(--type-flying-border);
+  color:var(--type-flying-border);
+  border: 2px solid var(--type-flying-border);
   background-color: var(--type-flying);
+   box-shadow: 1px 1px 1px  var(--type-flying-border)
 }
+.Border-type {
+border-radius: 3px;
+}
+

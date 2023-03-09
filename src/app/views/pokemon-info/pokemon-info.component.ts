@@ -1,3 +1,4 @@
+import { PokemonService } from './../../shared/services/Pokemon.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemon-info.component.scss']
 })
 export class PokemonInfoComponent {
+
+
+  constructor(private pokemonService : PokemonService){}
+
 
 }

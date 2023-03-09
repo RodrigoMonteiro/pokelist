@@ -15,16 +15,15 @@ export class CardComponent {
   @Input() pokemonNormalSprite: string = '';
   @Input() pokemonShinySprite: string = '';
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
-
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   getPrimaryType(primaryType: string[]) {
     return primaryType[0];
   }
+
   redirectPokemonInfo() {
-    this.router.navigate(['pokemon', this.pokemonName], { relativeTo: this.route });
+    this.router.navigate(['pokemon', this.pokemonName], {
+      relativeTo: this.route,
+    });
   }
 }
