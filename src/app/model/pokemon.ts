@@ -1,10 +1,11 @@
 export interface Pokemon {
   id: number;
   name: string;
-  height: number;
-  weight: number;
+  height?: number;
+  weight?: number;
   type: string[];
   normalSprite: string;
-  shinySprite: string;
-  region: string
+  shinySprite?: string;
+  region: string;
+  stats?: string[];
 }

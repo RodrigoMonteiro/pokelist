@@ -5,26 +5,21 @@
   <div class="img-info-container">
    <div class="img-info-card">
      <img
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
+      src={{pokemonInfo.normalSprite}}
       alt="image_normal_form"
     />
    <span>Normal</span>
    </div>
    <div class="img-info-card">
      <img
-       src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/132.png"
+       src={{pokemonInfo.shinySprite}}
        alt="image_shiny_form"
      />
      <span>Shiny</span>
    </div>
   </div>
   <div class="stat-info-container">
-    <span class="stat hp">Hp</span>
-    <span class="stat attack">Attack</span>
-    <span class="stat defense">Defense</span>
-    <span class="stat special-attack">Special-Attack</span>
-    <span class="stat special-defense">Special-Attack</span>
-    <span class="stat speed">Speed</span>
+    <span class="stat" *ngFor="let status of createArrayStats">{{status.name}}:{{status.value}}</span>
   </div>
   <div class="type-info-container">
     <div class="type-info-stronger">

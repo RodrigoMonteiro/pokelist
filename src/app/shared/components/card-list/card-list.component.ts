@@ -2,6 +2,7 @@ import { regions } from './../../../model/pokemonRegion';
 import { Pokemon } from './../../../model/pokemon';
 import { PokemonService } from './../../services/Pokemon.service';
 import { Component, OnInit } from '@angular/core';
+import { UtilServiceService } from '../../services/Util.service';
 
 @Component({
   selector: 'app-card-list',
@@ -12,11 +13,8 @@ export class CardListComponent implements OnInit {
   singlePokemon: Pokemon = {
     id: 0,
     name: '',
-    height: 0,
-    weight: 0,
     type: [],
     normalSprite: '',
-    shinySprite: '',
     region: '',
   };
   selectedButton: string = 'Kanto';
@@ -31,7 +29,10 @@ export class CardListComponent implements OnInit {
   pokemonListHisui: Pokemon[] = [];
   currentList = this.pokemonListKanto;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private utilService: UtilServiceService
+  ) {}
 
   ngOnInit() {
     this.getAllPokemons();
@@ -43,10 +44,10 @@ export class CardListComponent implements OnInit {
   addPokemonByRegion(pokemon: Pokemon) {
     switch (pokemon.region) {
       case 'Kanto':
-       if (!this.pokemonListKanto.find((p) => p.name === pokemon.name)) {
-         this.pokemonListKanto.push(pokemon);
-         this.pokemonListKanto.sort((a, b) => a.id - b.id);
-       }
+        if (!this.pokemonListKanto.find((p) => p.name === pokemon.name)) {
+          this.pokemonListKanto.push(pokemon);
+          this.pokemonListKanto.sort((a, b) => a.id - b.id);
+        }
         break;
       case 'Johto':
         if (!this.pokemonListJohto.find((p) => p.name === pokemon.name)) {
@@ -89,28 +90,28 @@ export class CardListComponent implements OnInit {
           this.pokemonListGalar.push(pokemon);
           this.pokemonListGalar.sort((a, b) => a.id - b.id);
         }
-        break
+        break;
       case 'Hisui':
         if (!this.pokemonListHisui.find((p) => p.name === pokemon.name)) {
           this.pokemonListHisui.push(pokemon);
           this.pokemonListHisui.sort((a, b) => a.id - b.id);
         }
-        break
+        break;
     }
   }
   savePokemonInfo(url: string) {
     this.pokemonService.getPokemonInformation(url).subscribe((e) => {
       const newPokemon = {
         id: e.id,
-        name: this.capitalizeFirstLetter(e.name),
+        name: this.utilService.capitalizeFirstLetter(e.name),
         height: e.height,
         weight: e.weight,
         type: e.types.map((el: any) =>
-          this.capitalizeFirstLetter(el.type.name)
+          this.utilService.capitalizeFirstLetter(el.type.name)
         ),
         normalSprite: e.sprites.other['official-artwork'].front_default,
         shinySprite: e.sprites.other['official-artwork'].front_shiny,
-        region: this.getPokemonRegion(e.id),
+        region: this.utilService.getPokemonRegion(e.id),
       };
       this.addPokemonByRegion(newPokemon);
     });
@@ -120,7 +121,7 @@ export class CardListComponent implements OnInit {
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
       })
-    )
+    );
     this.pokemonService.loadJohtoPokemons().subscribe((el) =>
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
@@ -160,19 +161,9 @@ export class CardListComponent implements OnInit {
       el.map((e: any) => {
         this.savePokemonInfo(e.url);
       })
-      );
-  }
-  getPokemonRegion(id: number) {
-    const region = regions.find(
-      (region) => id >= region.start && id <= region.end
     );
-
-    if (region) {
-      return region.name;
-    } else {
-      return 'Something went wrong...';
-    }
   }
+
   getPokemonByName(name: string): void {
     this.pokemonService.loadPokemonByName(name.toLowerCase()).subscribe({
       next: ({ id, name, height, weight, types, sprites }) => {
@@ -186,7 +177,7 @@ export class CardListComponent implements OnInit {
           ),
           normalSprite: sprites.other['official-artwork'].front_default,
           shinySprite: sprites.other['official-artwork'].front_shiny,
-          region: this.getPokemonRegion(id),
+          region: this.utilService.getPokemonRegion(id),
         };
       },
       error: (err) => {
