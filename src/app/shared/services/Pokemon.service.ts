@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +21,7 @@ export class PokemonService {
   getPokemonInformation(url: string) {
     return this.httpClient.get<any>(url);
   }
+
   loadKantoPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=151&offset=0`)
@@ -67,4 +68,30 @@ export class PokemonService {
       .get<any>(`${this.baseAPI}?limit=110&offset=898`)
       .pipe(map((e) => e.results));
   }
+  getPokemonFamily(pokemonId: number) {
+    return this.httpClient
+      .get<any>(`${this.baseAPI}${pokemonId}`)
+      .pipe(
+        switchMap((pokemon) => {
+          const speciesUrl = pokemon.species.url;
+          return this.httpClient.get<any>(speciesUrl);
+        }),
+        switchMap((species) => {
+          const evolutionChainUrl = species.evolution_chain.url;
+          return this.httpClient.get<any>(evolutionChainUrl);
+        }),
+        map((evolutionChain) => {
+          const family = [];
+          let current = evolutionChain.chain;
+          while (current) {
+            family.push(current.species.name);
+            current = current.evolves_to[0];
+          }
+          return family;
+        })
+      );
+  }
 }
+
+
+

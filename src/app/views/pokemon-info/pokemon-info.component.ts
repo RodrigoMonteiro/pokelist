@@ -1,3 +1,4 @@
+import { matchUps } from './../../model/pokemonMatchups';
 import { Pokemon } from './../../model/pokemon';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../../shared/services/Pokemon.service';
@@ -11,9 +12,10 @@ import { UtilServiceService } from 'src/app/shared/services/Util.service';
 })
 export class PokemonInfoComponent {
   namePokemonFromURL: string = '';
-  createArrayStats: any= [];
-  strongerAgainst: string[] =[]
-  weakerAgainst: string[] =[]
+  createArrayStats: any = [];
+  strongAgainst: string[] = [];
+  weakAgainst: string[] = [];
+  pokemonFamily: string[] = [];
 
   pokemonInfo: Pokemon = {
     id: 0,
@@ -62,17 +64,53 @@ export class PokemonInfoComponent {
             this.createArrayStats.push(statObject);
           }),
         };
-
+        this.getMatchUp(this.pokemonInfo.type);
+        this.pokemonService
+          .getPokemonFamily(this.pokemonInfo.id)
+          .subscribe((family) => {
+            this.pokemonFamily = family;
+            // console.log(this.pokemonFamily);
+          });
       },
       error: (err) => {
         console.error('Erro', err.status, 'Pokemon not found .. 😕');
       },
     });
   }
-  getTypesStrongerAgainst(types: string){
+  getMatchUp(types: string[]): void {
+    const type1MatchUp = matchUps[types[0]];
 
-  }
-  getTypesWeakerAgainst(types: string){
+    if (types.length === 1) {
+      this.weakAgainst = type1MatchUp.weakAgainst;
+      this.strongAgainst = type1MatchUp.strongAgainst;
+    }
+    const type2MatchUp = matchUps[types[1]];
+    const mergedMatchUp = {
+      weakAgainst: [
+        ...new Set([...type1MatchUp.weakAgainst, ...type2MatchUp.weakAgainst]),
+      ],
+      strongAgainst: [
+        ...new Set([
+          ...type1MatchUp.strongAgainst,
+          ...type2MatchUp.strongAgainst,
+        ]),
+      ],
+      resistanceAgainst: [
+        ...new Set([
+          ...type1MatchUp.resistanceAgainst,
+          ...type2MatchUp.resistanceAgainst,
+        ]),
+      ],
+    };
+    mergedMatchUp.weakAgainst = mergedMatchUp.weakAgainst.filter(
+      (type) => !mergedMatchUp.resistanceAgainst.includes(type)
+    );
+    mergedMatchUp.weakAgainst = mergedMatchUp.weakAgainst.filter(
+      (type) => !mergedMatchUp.strongAgainst.includes(type)
+    );
+    this.weakAgainst = mergedMatchUp.weakAgainst
+    this.strongAgainst = mergedMatchUp.strongAgainst
 
+    console.log(mergedMatchUp);
   }
 }

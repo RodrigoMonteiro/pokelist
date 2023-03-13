@@ -24,12 +24,20 @@
   <div class="type-info-container">
     <div class="type-info-stronger">
       <span>Strong against:</span>
+      <ul>
+        <li *ngFor="let type of strongAgainst">{{type}}</li>
+      </ul>
     </div>
     <div class="type-info-weaker">
       <span>Weak against:</span>
+      <ul>
+         <li *ngFor="let type of weakAgainst">{{type}}</li>
+      </ul>
     </div>
   </div>
   <div class="evolution-info-container">
-    <span>Evolution pokemons</span>
+   <ul>
+    <li *ngFor="let pokemon of pokemonFamily">{{pokemon}}</li>
+   </ul>
   </div>
 </div>
