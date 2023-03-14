@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from './../../shared/services/Pokemon.service';
 import { Component } from '@angular/core';
 import { UtilServiceService } from 'src/app/shared/services/Util.service';
+import { map } from 'rxjs';
+
 
 @Component({
   selector: 'app-pokemon-info',
@@ -11,11 +13,12 @@ import { UtilServiceService } from 'src/app/shared/services/Util.service';
   styleUrls: ['./pokemon-info.component.scss'],
 })
 export class PokemonInfoComponent {
+  private readonly BasePokemonImage  = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
   namePokemonFromURL: string = '';
   createArrayStats: any = [];
   strongAgainst: string[] = [];
   weakAgainst: string[] = [];
-  pokemonFamily: string[] = [];
+  pokemonFamily: any[] = [];
 
   pokemonInfo: Pokemon = {
     id: 0,
@@ -41,7 +44,10 @@ export class PokemonInfoComponent {
       this.getPokemonByName(this.namePokemonFromURL.toLowerCase());
     });
   }
+  getPokemonImageURL(pokemonId: string) {
+    return `${this.BasePokemonImage}${pokemonId}.png`;
 
+  }
   getPokemonByName(name: string) {
     this.pokemonService.loadPokemonByName(name.toLowerCase()).subscribe({
       next: ({ id, name, height, weight, types, sprites, stats }) => {
@@ -69,7 +75,7 @@ export class PokemonInfoComponent {
           .getPokemonFamily(this.pokemonInfo.id)
           .subscribe((family) => {
             this.pokemonFamily = family;
-            // console.log(this.pokemonFamily);
+            console.log('Family :', this.pokemonFamily);
           });
       },
       error: (err) => {
@@ -83,6 +89,7 @@ export class PokemonInfoComponent {
     if (types.length === 1) {
       this.weakAgainst = type1MatchUp.weakAgainst;
       this.strongAgainst = type1MatchUp.strongAgainst;
+      return;
     }
     const type2MatchUp = matchUps[types[1]];
     const mergedMatchUp = {
@@ -102,14 +109,20 @@ export class PokemonInfoComponent {
         ]),
       ],
     };
+
     mergedMatchUp.weakAgainst = mergedMatchUp.weakAgainst.filter(
       (type) => !mergedMatchUp.resistanceAgainst.includes(type)
     );
+
     mergedMatchUp.weakAgainst = mergedMatchUp.weakAgainst.filter(
       (type) => !mergedMatchUp.strongAgainst.includes(type)
     );
-    this.weakAgainst = mergedMatchUp.weakAgainst
-    this.strongAgainst = mergedMatchUp.strongAgainst
+    mergedMatchUp.strongAgainst = mergedMatchUp.strongAgainst.filter(
+      (type) => !mergedMatchUp.weakAgainst.includes(type)
+    );
+
+    this.weakAgainst = mergedMatchUp.weakAgainst;
+    this.strongAgainst = mergedMatchUp.strongAgainst;
 
     console.log(mergedMatchUp);
   }

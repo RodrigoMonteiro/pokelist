@@ -1,43 +1,57 @@
 <div class="pokemon-info-container">
-  <div class="options-info-container">
+  <!-- <div class="options-info-container">
     Options space
-  </div>
-  <div class="img-info-container">
-   <div class="img-info-card">
+  </div> -->
+  <div class="img-info-container" ngClass={{pokemonInfo.type[0]}} >
+   <div class="img-info-card"  ngClass={{pokemonInfo.type[0]}}>
      <img
       src={{pokemonInfo.normalSprite}}
       alt="image_normal_form"
+
     />
-   <span>Normal</span>
+   <span><strong>Normal</strong></span>
    </div>
-   <div class="img-info-card">
+   <div class="img-info-card"  ngClass={{pokemonInfo.type[0]}}>
      <img
        src={{pokemonInfo.shinySprite}}
        alt="image_shiny_form"
      />
-     <span>Shiny</span>
+    <span><strong>Shiny</strong></span>
    </div>
   </div>
-  <div class="stat-info-container">
-    <span class="stat" *ngFor="let status of createArrayStats">{{status.name}}:{{status.value}}</span>
-  </div>
-  <div class="type-info-container">
-    <div class="type-info-stronger">
-      <span>Strong against:</span>
-      <ul>
-        <li *ngFor="let type of strongAgainst">{{type}}</li>
-      </ul>
-    </div>
-    <div class="type-info-weaker">
-      <span>Weak against:</span>
-      <ul>
-         <li *ngFor="let type of weakAgainst">{{type}}</li>
-      </ul>
+  <div class="stat-info-container" ngClass={{pokemonInfo.type[0]}}>
+
+    <div class="stat" *ngFor="let status of createArrayStats">
+      <span class="stat-name" ><strong>{{status.name}}:</strong> </span>
+      <span class="stat-value" ngClass="{{status.name}} {{pokemonInfo.type[0]}}" [ngStyle]="{ 'width.px': status.value + 100 }"><strong>{{status.value}}</strong></span>
     </div>
   </div>
-  <div class="evolution-info-container">
-   <ul>
-    <li *ngFor="let pokemon of pokemonFamily">{{pokemon}}</li>
+  <div class="type-info-container" ngClass={{pokemonInfo.type[0]}}>
+    <div class="type-info-stronger" ngClass={{pokemonInfo.type[0]}}>
+      <span><strong>Strong against:</strong></span>
+      <ul>
+        <li *ngFor="let type of strongAgainst" ngClass={{type}}><strong>{{type}}</strong> </li>
+      </ul>
+    </div>
+    <div class="type-info-weaker" ngClass={{pokemonInfo.type[0]}}>
+      <span><strong>Weak against:</strong></span>
+      <ul>
+         <li *ngFor="let type of weakAgainst" ngClass={{type}}>
+         <strong>{{type}}</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="evolution-info-container" ngClass={{pokemonInfo.type[0]}} >
+    <span><strong>Chain pokemon evolutions</strong></span>
+   <ul ngClass={{pokemonInfo.type[0]}}>
+    <li *ngFor="let pokemon of pokemonFamily">
+      <div class="card-pokemon-evolution-container" ngClass={{pokemonInfo.type[0]}}>
+        <img src={{getPokemonImageURL(pokemon[1])}} alt="Alter_pokemon_image"/>
+
+       <span ngClass={{pokemonInfo.type[0]}}><strong>{{pokemon[0]}}</strong></span>
+      </div>
+
+    </li>
    </ul>
   </div>
 </div>

@@ -40,7 +40,7 @@ export const matchUps: PokemonTypes = {
   Water: {
     strongAgainst: ['Fire', 'Ground', 'Rock'],
     weakAgainst: ['Grass', 'Electric'],
-    resistanceAgainst: ['Fire', 'Water', 'Ice', 'Steel'],
+    resistanceAgainst: ['Fire', 'Water', 'Ice', 'Steel', 'Ground'],
   },
   Electric: {
     strongAgainst: ['Water', 'Flying'],

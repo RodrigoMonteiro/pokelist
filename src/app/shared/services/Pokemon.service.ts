@@ -8,6 +8,7 @@ import { map, switchMap } from 'rxjs';
 export class PokemonService {
   private readonly baseAPI = 'https://pokeapi.co/api/v2/pokemon/';
 
+
   constructor(private httpClient: HttpClient) {}
 
   loadAllPokemons() {
@@ -21,7 +22,6 @@ export class PokemonService {
   getPokemonInformation(url: string) {
     return this.httpClient.get<any>(url);
   }
-
   loadKantoPokemons() {
     return this.httpClient
       .get<any>(`${this.baseAPI}?limit=151&offset=0`)
@@ -84,7 +84,10 @@ export class PokemonService {
           const family = [];
           let current = evolutionChain.chain;
           while (current) {
-            family.push(current.species.name);
+            let id = current.species.url.split("/")[current.species.url.split("/").length - 2]
+            console.log('current name: ', current.species.name, 'current id: ', id);
+            family.push([current.species.name,id]);
+            // family.push(current.species.name);
             current = current.evolves_to[0];
           }
           return family;
