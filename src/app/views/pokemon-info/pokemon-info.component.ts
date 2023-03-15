@@ -45,6 +45,9 @@ export class PokemonInfoComponent {
       this.getPokemonByName(this.namePokemonFromURL.toLowerCase());
     });
   }
+  redirectToPokemonList(){
+    this.router.navigate([''])
+  }
   redirectPokemonInfoById(pokemonName: string) {
     this.router.navigate(['pokemon', pokemonName]);
   }
@@ -54,7 +57,7 @@ export class PokemonInfoComponent {
   getPokemonByName(name: string) {
     this.pokemonService.loadPokemonByName(name.toLowerCase()).subscribe({
       next: ({ id, name, height, weight, types, sprites, stats }) => {
-        this.createArrayStats =[]
+        this.createArrayStats = [];
         this.pokemonInfo = {
           id,
           name: this.utilService.capitalizeFirstLetter(name),

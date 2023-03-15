@@ -4,15 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { HomeComponent } from './views/home/home.component';
-import { PokemonInfoComponent } from './views/pokemon-info/pokemon-info.component';
+import { ViewsModule } from './views/views.module';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PokemonInfoComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    ViewsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
