@@ -175,7 +175,8 @@ export class CardListComponent implements OnInit {
           normalSprite: sprites.other['official-artwork'].front_default,
           shinySprite: sprites.other['official-artwork'].front_shiny,
           region: this.utilService.getPokemonRegion(id),
-        };
+        }
+        this.currentList = [this.singlePokemon]
       },
       error: (err) => {
         console.error('Erro', err.status, 'Pokemon not found .. 😕');
