@@ -1,3 +1,4 @@
+import { UtilServiceService } from 'src/app/shared/services/Util.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, switchMap } from 'rxjs';
@@ -8,8 +9,10 @@ import { map, switchMap } from 'rxjs';
 export class PokemonService {
   private readonly baseAPI = 'https://pokeapi.co/api/v2/pokemon/';
 
-
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private utilService: UtilServiceService
+  ) {}
 
   loadAllPokemons() {
     return this.httpClient
@@ -69,32 +72,34 @@ export class PokemonService {
       .pipe(map((e) => e.results));
   }
   getPokemonFamily(pokemonId: number) {
-    return this.httpClient
-      .get<any>(`${this.baseAPI}${pokemonId}`)
-      .pipe(
-        switchMap((pokemon) => {
-          const speciesUrl = pokemon.species.url;
-          return this.httpClient.get<any>(speciesUrl);
-        }),
-        switchMap((species) => {
-          const evolutionChainUrl = species.evolution_chain.url;
-          return this.httpClient.get<any>(evolutionChainUrl);
-        }),
-        map((evolutionChain) => {
-          const family = [];
-          let current = evolutionChain.chain;
-          while (current) {
-            let id = current.species.url.split("/")[current.species.url.split("/").length - 2]
-            console.log('current name: ', current.species.name, 'current id: ', id);
-            family.push([current.species.name,id]);
-            // family.push(current.species.name);
-            current = current.evolves_to[0];
-          }
-          return family;
-        })
-      );
+    return this.httpClient.get<any>(`${this.baseAPI}${pokemonId}`).pipe(
+      switchMap((pokemon) => {
+        const speciesUrl = pokemon.species.url;
+        return this.httpClient.get<any>(speciesUrl);
+      }),
+      switchMap((species) => {
+        const evolutionChainUrl = species.evolution_chain.url;
+        return this.httpClient.get<any>(evolutionChainUrl);
+      }),
+      map((evolutionChain) => {
+        const family = [];
+        let current = evolutionChain.chain;
+        while (current) {
+          let id =
+            current.species.url.split('/')[
+              current.species.url.split('/').length - 2
+            ];
+          console.log(
+            'current name: ',
+            current.species.name,
+            'current id: ',
+            id
+          );
+          family.push([current.species.name, id]);
+          current = current.evolves_to[0];
+        }
+        return family;
+      })
+    );
   }
 }
-
-
-

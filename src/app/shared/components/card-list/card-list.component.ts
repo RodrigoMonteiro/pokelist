@@ -38,9 +38,6 @@ export class CardListComponent implements OnInit {
     this.getAllPokemons();
   }
 
-  capitalizeFirstLetter(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
   addPokemonByRegion(pokemon: Pokemon) {
     switch (pokemon.region) {
       case 'Kanto':
@@ -169,11 +166,11 @@ export class CardListComponent implements OnInit {
       next: ({ id, name, height, weight, types, sprites }) => {
         this.singlePokemon = {
           id,
-          name: this.capitalizeFirstLetter(name),
+          name: this.utilService.capitalizeFirstLetter(name),
           height,
           weight,
           type: types.map((el: any) =>
-            this.capitalizeFirstLetter(el.type.name)
+            this.utilService.capitalizeFirstLetter(el.type.name)
           ),
           normalSprite: sprites.other['official-artwork'].front_default,
           shinySprite: sprites.other['official-artwork'].front_shiny,

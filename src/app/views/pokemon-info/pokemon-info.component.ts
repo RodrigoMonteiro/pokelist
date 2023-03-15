@@ -1,10 +1,9 @@
 import { matchUps } from './../../model/pokemonMatchups';
 import { Pokemon } from './../../model/pokemon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonService } from './../../shared/services/Pokemon.service';
 import { Component } from '@angular/core';
 import { UtilServiceService } from 'src/app/shared/services/Util.service';
-import { map } from 'rxjs';
 
 
 @Component({
@@ -13,7 +12,8 @@ import { map } from 'rxjs';
   styleUrls: ['./pokemon-info.component.scss'],
 })
 export class PokemonInfoComponent {
-  private readonly BasePokemonImage  = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+  private readonly BasePokemonImage =
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
   namePokemonFromURL: string = '';
   createArrayStats: any = [];
   strongAgainst: string[] = [];
@@ -35,7 +35,8 @@ export class PokemonInfoComponent {
   constructor(
     private pokemonService: PokemonService,
     private utilService: UtilServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -44,13 +45,16 @@ export class PokemonInfoComponent {
       this.getPokemonByName(this.namePokemonFromURL.toLowerCase());
     });
   }
+  redirectPokemonInfoById(pokemonName: string) {
+    this.router.navigate(['pokemon', pokemonName]);
+  }
   getPokemonImageURL(pokemonId: string) {
     return `${this.BasePokemonImage}${pokemonId}.png`;
-
   }
   getPokemonByName(name: string) {
     this.pokemonService.loadPokemonByName(name.toLowerCase()).subscribe({
       next: ({ id, name, height, weight, types, sprites, stats }) => {
+        this.createArrayStats =[]
         this.pokemonInfo = {
           id,
           name: this.utilService.capitalizeFirstLetter(name),
