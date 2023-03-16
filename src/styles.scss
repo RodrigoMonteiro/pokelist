@@ -195,4 +195,11 @@ html, body{
 .Border-type {
 border-radius: 3px;
 }
+.custom-snackbar {
+    --mdc-snackbar-container-color: #CC0000;
+    --mdc-snackbar-supporting-text-color: #FFF;
+}
+
+
+
 

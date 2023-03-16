@@ -1,8 +1,8 @@
-import { regions } from './../../../model/pokemonRegion';
 import { Pokemon } from './../../../model/pokemon';
 import { PokemonService } from './../../services/Pokemon.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UtilServiceService } from '../../services/Util.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-card-list',
@@ -31,7 +31,8 @@ export class CardListComponent implements OnInit {
 
   constructor(
     private pokemonService: PokemonService,
-    private utilService: UtilServiceService
+    private utilService: UtilServiceService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -175,11 +176,20 @@ export class CardListComponent implements OnInit {
           normalSprite: sprites.other['official-artwork'].front_default,
           shinySprite: sprites.other['official-artwork'].front_shiny,
           region: this.utilService.getPokemonRegion(id),
-        }
-        this.currentList = [this.singlePokemon]
+        };
+        this.currentList = [this.singlePokemon];
       },
       error: (err) => {
-        console.error('Erro', err.status, 'Pokemon not found .. 😕');
+        if (err.status === 404) {
+          this._snackBar.open(`Pokemon "${name}" not found .. 😕`, 'Close', {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            panelClass: ['custom-snackbar']
+          });
+        } else {
+          console.error('Error', err.status, err.message);
+        }
       },
     });
   }

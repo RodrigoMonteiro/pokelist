@@ -14,7 +14,7 @@
       height: 100%;
       background-color: var(--background-secondary);
       border: 1px solid var(--background-secondary);
-      border-radius: 3px;
+      border-radius: 5px;
 
       &:hover {
         cursor: pointer;
@@ -161,9 +161,10 @@ span {
       justify-content: space-evenly;
       align-items: center;
       width: 108%;
-      height: 90%;
+      height: 92%;
       background-color: #fff;
       border-radius: 5px;
+      border-style: none;
 
       li {
         display: flex;
@@ -224,6 +225,7 @@ span {
       width: 45%;
       height: 95%;
       border-radius: 5px;
+
       .type-info-stronger,
       .type-info-weaker {
         padding: 5px;
@@ -234,7 +236,8 @@ span {
         height: 90%;
         background-color: #fff;
         color: #fff;
-        border-radius: 4px;
+        border-radius: 5px;
+        border-style: none;
         span {
           strong {
             color: #000;
@@ -248,7 +251,8 @@ span {
           list-style: none;
           height: 90%;
           width: 100%;
-          border-radius: 4px;
+          border-radius: 5px;
+          border-style: none;
         }
         li {
           text-align: center;
@@ -266,8 +270,9 @@ span {
       justify-content: space-evenly;
       width: 50%;
       height: 85%;
-      border-radius: 4px;
+      border-radius: 5px;
       background-color: #fff;
+      border-style: none;
       .stat {
         position: relative;
         width: 95%;
@@ -284,7 +289,7 @@ span {
           padding-left: 5px;
           margin-left: 15px;
           display: inline-block;
-          border-radius: 3px;
+          border-radius: 5px;
           transition: width 0.5s ease-in-out;
           z-index: 2;
           &:before {
@@ -293,7 +298,7 @@ span {
             width: 587px;
             height: 100%;
             position: absolute;
-            border-radius: 4px;
+            border-radius: 5px;
             // background-color: grey;
             z-index: -1;
           }
