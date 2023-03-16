@@ -1,31 +1,67 @@
 <div class="card-list-header-container">
   <span><strong>Search Pokemons</strong></span>
   <div class="btn-container">
-    <button class="btn" [ngClass]="this.selectedButton === 'Kanto' ? 'btn-selected':''" (click)="selectKantoRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Kanto' ? 'btn-selected' : ''"
+      (click)="selectKantoRegion()"
+    >
       <strong>Kanto</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Johto' ? 'btn-selected':''" (click)="selectJohtoRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Johto' ? 'btn-selected' : ''"
+      (click)="selectJohtoRegion()"
+    >
       <strong>Johto</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Hoenn' ? 'btn-selected':''" (click)="selectHoennRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Hoenn' ? 'btn-selected' : ''"
+      (click)="selectHoennRegion()"
+    >
       <strong>Hoenn</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Sinnoh' ? 'btn-selected':''" (click)="selectSinnohRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Sinnoh' ? 'btn-selected' : ''"
+      (click)="selectSinnohRegion()"
+    >
       <strong>Sinnoh</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Unova' ? 'btn-selected':''" (click)="selectUnovaRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Unova' ? 'btn-selected' : ''"
+      (click)="selectUnovaRegion()"
+    >
       <strong>Unova</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Kalos' ? 'btn-selected':''" (click)="selectKalosRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Kalos' ? 'btn-selected' : ''"
+      (click)="selectKalosRegion()"
+    >
       <strong>Kalos</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Alola' ? 'btn-selected':''" (click)="selectAlolaRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Alola' ? 'btn-selected' : ''"
+      (click)="selectAlolaRegion()"
+    >
       <strong>Alola</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Galar' ? 'btn-selected':''" (click)="selectGalarRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Galar' ? 'btn-selected' : ''"
+      (click)="selectGalarRegion()"
+    >
       <strong>Galar</strong>
     </button>
-    <button class="btn"  [ngClass]="this.selectedButton === 'Hisui' ? 'btn-selected':''" (click)="selectHisuiRegion()">
+    <button
+      class="btn"
+      [ngClass]="this.selectedButton === 'Hisui' ? 'btn-selected' : ''"
+      (click)="selectHisuiRegion()"
+    >
       <strong>Hisui</strong>
     </button>
   </div>
@@ -36,28 +72,31 @@
       placeholder="Search by name.."
       #input
     />
-    <button class="input-btn-submit"
-    (click)="getPokemonByName(input.value); input.value=''">
-      <mat-icon
-        fontIcon="search"
-      ></mat-icon>
+    <button
+      class="input-btn-submit"
+      (click)="getPokemonByName(input.value); input.value = ''"
+    >
+      <mat-icon fontIcon="search"></mat-icon>
     </button>
   </div>
 </div>
-<div class="card-list-content-container">
-<ul>
-  <li *ngFor="let pokemon of currentList">
-    <app-card
-    [pokemonNumber] = pokemon.id
-    [pokemonName] = pokemon.name
-    [pokemonTypes] = pokemon.type
-    [pokemonNormalSprite] = pokemon.normalSprite
-    >
-  </app-card></li>
-</ul>
+  <div class="card-list-content-container" *ngIf="loaded; else loading">
+    <ul>
+      <li *ngFor="let pokemon of currentList">
+        <app-card
+          [pokemonNumber]="pokemon.id"
+          [pokemonName]="pokemon.name"
+          [pokemonTypes]="pokemon.type"
+          [pokemonNormalSprite]="pokemon.normalSprite"
+        >
+        </app-card>
+      </li>
+    </ul>
+  </div>
 
-
-</div>
-<div class="card-list-footer-container">
-
-</div>
+<ng-template #loading>
+  <div class="loading-spinner">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>
+<div class="card-list-footer-container"></div>

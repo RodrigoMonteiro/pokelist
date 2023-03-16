@@ -8,10 +8,24 @@ import { CardComponent } from './components/card/card.component';
 import { PokemonService } from './services/Pokemon.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { CapitalizeFirstLetterPipe } from './pipes/capitalize-first-letter.pipe';
 @NgModule({
-  declarations: [HeaderComponent, SidenavComponent, SelectComponent, CardComponent, CardListComponent],
+  declarations: [
+    HeaderComponent,
+    SidenavComponent,
+    SelectComponent,
+    CardComponent,
+    CardListComponent,
+    CapitalizeFirstLetterPipe,
+  ],
   imports: [HttpClientModule, CommonModule, MaterialModule],
-  exports: [HeaderComponent, SidenavComponent, CardComponent, CardListComponent],
-  providers:[PokemonService]
+  exports: [
+    HeaderComponent,
+    SidenavComponent,
+    CardComponent,
+    CardListComponent,
+    CapitalizeFirstLetterPipe,
+  ],
+  providers: [PokemonService],
 })
 export class SharedModule {}

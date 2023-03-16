@@ -14,6 +14,7 @@ import { UtilServiceService } from 'src/app/shared/services/Util.service';
 export class PokemonInfoComponent {
   private readonly BasePokemonImage =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+  loadedPage: boolean = false
   namePokemonFromURL: string = '';
   createArrayStats: any = [];
   strongAgainst: string[] = [];
@@ -40,13 +41,21 @@ export class PokemonInfoComponent {
   ) {}
 
   ngOnInit() {
+
+    //  setTimeout(() => {
+    //    this.route.params.subscribe((params) => {
+    //      this.namePokemonFromURL = params['name'];
+    //      this.getPokemonByName(this.namePokemonFromURL.toLowerCase());
+    //    });
+    //  },3000)  => Testing spinner
+
     this.route.params.subscribe((params) => {
       this.namePokemonFromURL = params['name'];
       this.getPokemonByName(this.namePokemonFromURL.toLowerCase());
     });
   }
-  redirectToPokemonList(){
-    this.router.navigate([''])
+  redirectToPokemonList() {
+    this.router.navigate(['']);
   }
   redirectPokemonInfoById(pokemonName: string) {
     this.router.navigate(['pokemon', pokemonName]);
@@ -82,8 +91,8 @@ export class PokemonInfoComponent {
           .getPokemonFamily(this.pokemonInfo.id)
           .subscribe((family) => {
             this.pokemonFamily = family;
-            console.log('Family :', this.pokemonFamily);
           });
+        this.loadedPage = true;
       },
       error: (err) => {
         console.error('Erro', err.status, 'Pokemon not found .. 😕');
@@ -130,7 +139,5 @@ export class PokemonInfoComponent {
 
     this.weakAgainst = mergedMatchUp.weakAgainst;
     this.strongAgainst = mergedMatchUp.strongAgainst;
-
-    console.log(mergedMatchUp);
   }
 }

@@ -88,13 +88,7 @@ export class PokemonService {
           let id =
             current.species.url.split('/')[
               current.species.url.split('/').length - 2
-            ];
-          console.log(
-            'current name: ',
-            current.species.name,
-            'current id: ',
-            id
-          );
+            ]
           family.push([current.species.name, id]);
           current = current.evolves_to[0];
         }

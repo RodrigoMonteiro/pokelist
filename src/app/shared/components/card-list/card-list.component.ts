@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit {
+  loaded = false
   singlePokemon: Pokemon = {
     id: 0,
     name: '',
@@ -36,6 +37,7 @@ export class CardListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // setTimeout(() => this.getAllPokemons(), 4000)  =>  Testing the spinner
     this.getAllPokemons();
   }
 
@@ -160,6 +162,7 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
+    this.loaded =true
   }
 
   getPokemonByName(name: string): void {
