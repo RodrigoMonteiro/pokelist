@@ -67,14 +67,17 @@
   </div>
   <div class="input-container">
     <input
-      class="input-field"
-      type="text"
-      placeholder="Search by name.."
-      #input
-    />
+  class="input-field"
+  type="text"
+  placeholder="Search by name.."
+  (keyup.enter)="getPokemonByName(input.value); input.value=''"
+
+  #input
+/>
     <button
       class="input-btn-submit"
-      (click)="getPokemonByName(input.value); input.value = ''"
+      (click)="getPokemonByName(input.value);
+       input.value = ''"
     >
       <mat-icon fontIcon="search"></mat-icon>
     </button>

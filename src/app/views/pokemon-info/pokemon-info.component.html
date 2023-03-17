@@ -28,8 +28,8 @@
       <div class="img-basic-info-container">
         <span><strong>Nº: {{pokemonInfo.id}} </strong></span>
         <span><strong>Name: {{pokemonInfo.name}}</strong></span>
-        <span><strong>Height: {{pokemonInfo.height}}</strong></span>
-        <span><strong>Weight: {{pokemonInfo.weight}}</strong></span>
+        <span><strong>Height: {{pokemonInfo.height | transformHeight}} m</strong></span>
+        <span><strong>Weight: {{pokemonInfo.weight | transformWeight}} kg</strong></span>
         <span><strong>Region: {{ pokemonInfo.region}}</strong></span>
         <div class="img-basic-info-types">
           <span><strong>Type(s):</strong></span>

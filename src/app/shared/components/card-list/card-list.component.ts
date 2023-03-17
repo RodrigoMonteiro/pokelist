@@ -98,6 +98,7 @@ export class CardListComponent implements OnInit {
         }
         break;
     }
+
   }
   savePokemonInfo(url: string) {
     this.pokemonService.getPokemonInformation(url).subscribe((e) => {
@@ -114,6 +115,7 @@ export class CardListComponent implements OnInit {
         region: this.utilService.getPokemonRegion(e.id),
       };
       this.addPokemonByRegion(newPokemon);
+      this.loaded = true
     });
   }
   getAllPokemons() {
@@ -162,7 +164,6 @@ export class CardListComponent implements OnInit {
         this.savePokemonInfo(e.url);
       })
     );
-    this.loaded =true
   }
 
   getPokemonByName(name: string): void {

@@ -7,7 +7,7 @@
   border-radius: 4px;
   cursor: pointer;
   z-index: 0;
-  box-shadow: 2px 2px  2px  rgba(177, 166, 166, 0.7);
+  box-shadow: 1px 1px  1px  rgba(54, 52, 52, 0.7);
 
 
   .card-header {
@@ -26,12 +26,10 @@
     width: 100%;
 
     img {
-      border: 1px solid rgb(177, 166, 166);
       height: 100%;
       width: 96%;
       background-color: white;
       border-radius: 3px;
-      box-shadow: 1px 1px 1px rgb(177, 166, 166);
     }
   }
 
