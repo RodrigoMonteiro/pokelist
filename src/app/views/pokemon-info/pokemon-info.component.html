@@ -76,7 +76,7 @@
 
       <div class="stat" *ngFor="let status of createArrayStats">
         <span class="stat-name" ><strong>{{status.name}}:</strong> </span>
-        <span class="stat-value" ngClass="{{status.name}} {{pokemonInfo.type[0]}}" [ngStyle]="{ 'width.px': status.value }"><strong>{{status.value}}</strong></span>
+        <span class="stat-value" ngClass="{{status.name}}" [ngStyle]="{ 'width.px': status.value }"><strong>{{status.value}}</strong></span>
       </div>
     </div>
   </div>
