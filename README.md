@@ -1,27 +1,44 @@
-# Pokelist
+# PokeList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+### Web application to consume data from Pokeapi.co  using Angular
 
-## Development server
+## Front-end setup
+To install the dependencies, go to the folder PokeList and run: ``` npm i ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Usage
+This web application retrieved data of all Pokemon of all regions discovered at the moment. The pokeList separate Pokemon of each region and lists them in ascendant order.
 
-## Code scaffolding
+## Application Images
+By default, when the application is on, the first region (Kanto) is selected, so all of Kanto's Pokemon are listed showing brief information like name, pokedex number, and type.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Observation: Each card that contains a Pokemon, has the color of his primary type.
 
-## Build
+<img src="src/assets/readme/landing-page-light.png">
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Case the user selects another region, the Pokemons are listed the same way (ascendant), in the image below "Hisui region" is selected.
 
-## Running unit tests
+<img src="src/assets/readme/hisuiPokemons.png">
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The application has a theme switch button on left-top, by default, the light theme is selected, but when the button is clicked, the dark theme is applied as seen in the image below.
 
-## Running end-to-end tests
+<img src="src/assets/readme/landing-page-dark.png">
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+<span> Observation: All other images on this readme file contain the application using the dark theme.</span>
 
-## Further help
+<span>In case the user desires more information about a specific Pokemon, just needs to click on it, in the example below simulates a click in Pokemon 1º of pokedex called Bulbasaur.</span>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<img src="src/assets/readme/pokemon-selected.png">
+
+There are containers that have the Pokemon information like; Pokedex number, Name, Height, Weight, Region, strong and weak type according to Pokemon's type, status information and evolution chain. It is possible to click on any Pokemon in chain evolution (redirect to) to see his specific information page. 
+
+<span>
+The application allows the user to search for a Pokemon by name in an input field on the right of the last region (Hisui). The image below shows a search for "Pikachu".
+</span>
+
+<img src="src/assets/readme/findByName.png">
+
+<span> If Pokemon does not exist, a snackbar  on the bottom center saying that Pokemon does not exist. </span>
+
+<img src="src/assets/readme/pokemonNotFound.png">
+
+
